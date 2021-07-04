@@ -1,0 +1,35 @@
+﻿@model OnlineCinemaAdminApplication.Models.Order
+
+<div class="container">
+
+    <p>
+        <a class="btn btn-info">@Model.User.UserName</a>
+    </p>
+
+    @for (int i = 0; i < Model.TicketInOrders.Count(); i++)
+    {
+        var ticket = Model.TicketInOrders.ElementAt(i).ChosenTicket;
+
+        if (i % 3 == 0)
+        {
+            @:<div class="row">
+            }
+
+            <div class="col-md-3 m-4">
+                <div class="card" style="width: 20rem; height: 30rem;">
+                    <img class="card-img-top" style="height: 70%" src="@ticket.TicketImage" alt="Card image cap">
+                    <div class="card-body">
+                        <h2>@ticket.TicketName</h2>
+                        <p>@ticket.TicketDescription</p>
+                    </div>
+
+                </div>
+            </div>
+
+            if (i % 3 == 2)
+            {
+            @:</div>
+        }
+
+    }
+</div>
